@@ -1,14 +1,3 @@
-/*
-    formula  Harris-Benedict 
-
-    TMB Mulher = 655 + (9,6 * P) + (1,8 * A) – (4,7 * I)
-    TMB Homem = 66 + (13,7 * P) + (5 * A) – (6,8 * I)
-
-    P=> Peso em kg
-    A=> Altura em cm
-    I=> Idade em anos
-*/
-
 function Calcular(peso, altura) {
    return peso / (Math.pow(altura, 2)); 
 }
@@ -16,23 +5,37 @@ function Calcular(peso, altura) {
 function Mostrar() {
     let peso = document.querySelector("#peso").value;
     let altura = document.querySelector("#altura").value;
-    document.querySelector("#resultado").innerText = Calcular(peso, altura);
-    if(Calcular(peso, altura) < 18.5) {
-        document.querySelector("#classificacao").innerText = "Magreza"
+    if(altura == "" || peso == "" || altura <= 0 || peso <= 0) {
+        alert('Peso e altura inválidos!');
     }
-    else if(Calcular(peso, altura) >= 18.5 && Calcular(peso, altura) <= 24.9) {
-        document.querySelector("#classificacao").innerText = "Normal"
-    }
-    else if(Calcular(peso, altura) >= 25 && Calcular(peso, altura) <= 29.9) {
-        document.querySelector("#classificacao").innerText = "Sobrepeso"
-    }
-    else if(Calcular(peso, altura) >= 30 && Calcular(peso, altura) <= 39.9) {
-        document.querySelector("#classificacao").innerText = "Obesidade"
-    }
-    else if(Calcular(peso, altura) > 40) {
-        document.querySelector("#classificacao").innerText = "Obesidade Grave"
-        document.querySelector("#classificacao").style.color = 'Purple'
-        document.querySelector("#classificacao").style.fontWeight = 'bolder'
+    else {
+        let IMC = Calcular(peso, altura)
+        document.querySelector("#resultado").innerText = IMC.toFixed(2);
+        if(IMC < 18.5) {
+            document.querySelector("#classificacao").innerText = "Magreza"
+            document.querySelector("#classificacao").style.color = 'Blue'
+            document.querySelector("#classificacao").style.fontWeight = 'bolder'
+        }
+        else if(IMC >= 18.5 && IMC <= 24.9) {
+            document.querySelector("#classificacao").innerText = "Normal"
+            document.querySelector("#classificacao").style.color = 'Green'
+            document.querySelector("#classificacao").style.fontWeight = 'bolder'
+        }
+        else if(IMC >= 25 && IMC <= 29.9) {
+            document.querySelector("#classificacao").innerText = "Sobrepeso"
+            document.querySelector("#classificacao").style.color = 'Orange'
+            document.querySelector("#classificacao").style.fontWeight = 'bolder'
+        }
+        else if(IMC >= 30 && IMC <= 39.9) {
+            document.querySelector("#classificacao").innerText = "Obesidade"
+            document.querySelector("#classificacao").style.color = 'Red'
+            document.querySelector("#classificacao").style.fontWeight = 'bolder'
+        }
+        else if(IMC > 40) {
+            document.querySelector("#classificacao").innerText = "Obesidade Grave"
+            document.querySelector("#classificacao").style.color = 'Purple'
+            document.querySelector("#classificacao").style.fontWeight = 'bolder'
+        }
     }
 }
 document.querySelector("#btnCalculo").addEventListener("click", Mostrar);
