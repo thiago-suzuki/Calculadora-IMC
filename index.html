@@ -7,17 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cálculo IMC</title>
     <link rel="stylesheet" href='site.css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src='app.js' defer></script>
 </head>
 
-<body>
-    <h2>IMC - Índice de Massa Corpórea</h2>
+<body class="m-2 bg-light">
+    <h2 class="text-center">IMC - Índice de Massa Corpórea</h2>
     <hr>
     
-    <br>
-
     <div>
-        <label class='teste' for='peso'>Peso :</label>
+        <label class='teste' for='peso'>Peso:</label>
         <input type="text" id="peso" required>
     </div>
 
@@ -30,11 +29,12 @@
 
     <br>
 
-    <div>
-        <button id='btnCalculo'> Calcular Taxa</button>
+    <div class="d-inline-block">
+        <button class="btn btn-sm" id='btnCalculo'>Calcular Taxa</button>
+        <button class="btn btn-sm" id='btnLimpar'>Limpar Tudo</button>
     </div>
 
-    <br>
+    <br><br>
 
     <div id='resultado'>
         Aqui vai aparecer o resultado

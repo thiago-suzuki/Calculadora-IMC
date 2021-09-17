@@ -2,6 +2,15 @@ function Calcular(peso, altura) {
    return peso / (Math.pow(altura, 2)); 
 }
 
+function Resetar() {
+    document.querySelector("#peso").value = ""
+    document.querySelector("#altura").value = ""
+    document.querySelector("#classificacao").innerText = "Classificação"
+    document.querySelector("#classificacao").style.fontWeight = 'normal'
+    document.querySelector("#classificacao").style.color = 'Black'
+    document.querySelector("#resultado").innerText = "Aqui vai aparecer o resultado"
+}
+
 function Mostrar() {
     let peso = document.querySelector("#peso").value;
     let altura = document.querySelector("#altura").value;
@@ -10,7 +19,7 @@ function Mostrar() {
     }
     else {
         let IMC = Calcular(peso, altura)
-        document.querySelector("#resultado").innerText = IMC.toFixed(2);
+        document.querySelector("#resultado").innerText = IMC.toFixed(5);
         if(IMC < 18.5) {
             document.querySelector("#classificacao").innerText = "Magreza"
             document.querySelector("#classificacao").style.color = 'Blue'
@@ -39,3 +48,4 @@ function Mostrar() {
     }
 }
 document.querySelector("#btnCalculo").addEventListener("click", Mostrar);
+document.querySelector("#btnLimpar").addEventListener("click", Resetar);
